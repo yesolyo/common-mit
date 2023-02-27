@@ -30,7 +30,7 @@ public class ZlibCommand {
 
                 File zFile = new File(file.getPath() + ".z");
 
-                System.out.println( zFile.getName() + " " + zFile.length() + "byte");
+                System.out.println( zFile.getName() + " " + zFile.length() + "byte" + " (" + zFile.length() / 1024 + "KB)");
 
             } catch (IOException e) {
                 System.out.println("[ERROR] 압축 에러");

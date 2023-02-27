@@ -5,7 +5,7 @@ public class ListCommand {
         File[] files = directory.listFiles();
         assert files != null;
         for (File file : files) {
-            System.out.println(file.getName() + " " + file.length() + "byte");
+            System.out.println(file.getName() + " " + file.length() + "byte" + " (" + file.length() / 1024 + "KB)");
         }
     }
 }
