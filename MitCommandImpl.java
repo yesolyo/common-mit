@@ -8,6 +8,11 @@ public class MitCommandImpl implements MitCommand{
 
     @Override
     public Optional<List<File>> list(String directoryName) {
+        if(directoryName == null){
+            System.out.printf("적절하지 않은 입력입니다. : %s", directoryName);
+            return Optional.empty();
+        }
+
         File folder = new File(directoryName);
         List<File> result = new ArrayList<>();
 
