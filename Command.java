@@ -21,6 +21,7 @@ public class Command {
         switch (command) {
             case "list" -> caseOfList();
             case "hash" -> caseOfHash();
+            case "zlib" -> caseOfZlib();
         }
     }
 
@@ -30,5 +31,9 @@ public class Command {
 
     private void caseOfHash() {
         HashCommand.printHashes(directory.getDirectory());
+    }
+
+    private void caseOfZlib() {
+        ZlibCommand.printZlib(directory.getDirectory());
     }
 }
