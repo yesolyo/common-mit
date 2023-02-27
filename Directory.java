@@ -1,11 +1,7 @@
 import java.io.File;
 
 public class Directory {
-    private File directory;
-
-    public Directory(File directory) {
-        this.directory = directory;
-    }
+    private final File directory;
 
     public Directory(String input) {
         this.directory = new File(input);
