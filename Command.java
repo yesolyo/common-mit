@@ -17,7 +17,18 @@ public class Command {
         }
     }
 
-    public void caseOfList() {
+    public void chooseCases() {
+        switch (command) {
+            case "list" -> caseOfList();
+            case "hash" -> caseOfHash();
+        }
+    }
+
+    private void caseOfList() {
         ListCommand.printFiles(directory.getDirectory());
+    }
+
+    private void caseOfHash() {
+        HashCommand.printHashes(directory.getDirectory());
     }
 }
