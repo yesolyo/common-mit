@@ -11,13 +11,16 @@ public class MitCommandImpl implements MitCommand{
         File folder = new File(directoryName);
         List<File> result = new ArrayList<>();
 
-        if(!folder.isDirectory()){
+        if(folder == null || !folder.isDirectory()){ // 디렉토리가 아닌 경우
             System.out.printf("입력하신 디렉토리명은 디렉토리가 아닙니다. : %s%n", directoryName);
+            return Optional.empty();
+        }else if(folder.listFiles() != null){ // 디렉토리안에 파일이 존재하지 않는 경우
+            System.out.printf("디렉토리가 비어있습니다. : %s%n", folder.getName());
             return Optional.empty();
         }
 
         Collections.addAll(result, folder.listFiles());
-        return Optional.ofNullable(result);
+        return Optional.of(result);
     }
 
     @Override
