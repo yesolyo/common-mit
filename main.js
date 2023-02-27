@@ -7,19 +7,21 @@ this.stdio = this.readline.createInterface({
 });
 
 console.log("> 명령어를 입력해 주세요.");
-console.log("형식 : mit ");
+console.log("형식 1. : mit list 디렉토리명");
+console.log("형식 2. : mit hash 디렉토리명");
+console.log("형식 3. : mit zlib 디렉토리명");
 
 this.stdio.on("line", (cmd) => {
   if (cmd === "exit") {
     this.stdio.close();
   }
 
-  const [commandName, subCommand, path] = cmd.split(" ");
+  const [commandName, subCommand, directoryPath] = cmd.split(" ");
 
   if (commandName === "mit") {
     switch (subCommand) {
       case "list":
-        list(path);
+        list(directoryPath);
         break;
       case "hash":
         break;
