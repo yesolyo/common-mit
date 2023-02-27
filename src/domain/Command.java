@@ -1,5 +1,8 @@
 package domain;
 
+import java.util.List;
+import java.util.Map;
+
 public class Command {
 
 	private final CommandType command;
@@ -21,5 +24,9 @@ public class Command {
 		if (!tokens[1].equals("list") && !tokens[1].equals("hash") && !tokens[1].equals("zlib")) {
 			throw new IllegalArgumentException("[ERROR] 명령어는 [list, hash, zlib] 중 하나여야 합니다.");
 		}
+	}
+
+	public List<Map<String, Object>> doTask() {
+		return command.doTask(directoryPath);
 	}
 }
