@@ -6,6 +6,10 @@ public class Mit {
     }
 
     public boolean isMit() {
-        return mit.equals("mit");
+        if (mit.equals("mit")) {
+            return true;
+        }
+
+        throw new IllegalArgumentException("mit 입력하세요.");
     }
 }

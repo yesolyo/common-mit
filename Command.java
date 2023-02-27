@@ -6,14 +6,23 @@ public class Command {
     }
 
     public boolean isList() {
-        return command.equals("list");
+        if (command.equals("list")) {
+            return true;
+        }
+        throw new IllegalArgumentException("mit 입력하세요.");
     }
 
     public boolean isHash() {
-        return command.equals("hash");
+        if (command.equals("hash")) {
+            return true;
+        }
+        throw new IllegalArgumentException("mit 입력하세요.");
     }
 
     public boolean isZlib() {
-        return command.equals("zlib");
+        if (command.equals("zlib")) {
+            return true;
+        }
+        throw new IllegalArgumentException("mit 입력하세요.");
     }
 }
