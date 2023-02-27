@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MitCommandImpl implements MitCommand{
@@ -14,9 +15,7 @@ public class MitCommandImpl implements MitCommand{
             return null;
         }
 
-        for(String fileName : folder.list()){
-            result.add(new File(fileName));
-        }
+        Collections.addAll(result, folder.listFiles());
         return result;
     }
 
