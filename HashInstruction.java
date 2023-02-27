@@ -33,6 +33,6 @@ public class HashInstruction {
             hexHash.append(hexString);
         }
 
-        System.out.println(hexHash);
+        System.out.println(file.getName() + " = " + hexHash);
     }
 }
