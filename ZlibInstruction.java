@@ -39,6 +39,6 @@ public class ZlibInstruction {
     private void printZipFiles(File dir) {
         Stream.of(dir.listFiles())
                 .filter(f -> f.getName().endsWith(".z"))
-                .forEach(f -> System.out.println(f.getName() + " " + f.length()/1024 + "KB"));
+                .forEach(f -> System.out.println(f.getName() + " " + (f.length() / 1024 + 1) + "KB"));
     }
 }

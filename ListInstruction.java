@@ -7,7 +7,7 @@ public class ListInstruction {
         File[] files = dir.listFiles();
 
         Stream.of(files).forEach(f -> {
-            System.out.println(f.getName() + " " + f.length() + "KB");
+            System.out.println(f.getName() + " " + (f.length() / 1024 + 1) + "KB");
         });
     }
 }
