@@ -1,11 +1,12 @@
 import java.util.List;
 
-public class Command extends Directory {
+public class Command {
     private final String command;
+    private final Directory directory;
 
-    public Command(String input) {
-        super();
+    public Command(String input, Directory directory) {
         this.command = input;
+        this.directory = directory;
         isCommand();
     }
 
@@ -17,6 +18,6 @@ public class Command extends Directory {
     }
 
     public void caseOfList() {
-        ListCommand.printFiles(directory);
+        ListCommand.printFiles(directory.getDirectory());
     }
 }

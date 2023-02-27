@@ -9,8 +9,8 @@ public class Console {
         inputs = br.readLine().split(" ");
 
         Mit mit = new Mit(inputs[0]);
-        Command command = new Command(inputs[1]);
         Directory directory = new Directory(inputs[2]);
+        Command command = new Command(inputs[1], directory);
 
         command.caseOfList();
         br.close();
