@@ -1,0 +1,20 @@
+{
+  "name": "common-mit",
+  "version": "1.0.0",
+  "description": "CS16 공통 프로젝트 저장소",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youzysu/common-mit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youzysu/common-mit/issues"
+  },
+  "homepage": "https://github.com/youzysu/common-mit#readme"
+}
