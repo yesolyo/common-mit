@@ -10,15 +10,4 @@ public class Directory {
             throw new IllegalArgumentException("올바른 경로가 아닙니다.");
         }
     }
-
-    public void printFiles() {
-        File[] files = directory.listFiles();
-        assert files != null;
-        for (File file : files) {
-            System.out.println("파일 이름: " + file.getName()
-                    +
-                    ", "
-                    + "파일 크기: " + file.length() + "bytes");
-        }
-    }
 }
