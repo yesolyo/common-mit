@@ -1,4 +1,5 @@
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -9,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MitCommandImplTest {
     @Test
+    @DisplayName("mit list 명령어를 수행하여 디렉토리안에 파일들을 가져오는지 테스트")
     public void list_givenDirectoryName_whenMitList_thenGetFileList(){
         //given
         MitCommand mit = new MitCommandImpl();
