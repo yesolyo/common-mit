@@ -8,3 +8,6 @@ CS16 공통 프로젝트 저장소
 ### 해시값 추출
 - https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=javaking75&logNo=220551348645
 - https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=96s0907&logNo=220930824319
+
+### 파일 압축
+- https://kitty-geno.tistory.com/170

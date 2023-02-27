@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -8,24 +9,36 @@ public class ZlibInstruction {
         File[] files = dir.listFiles();
 
         for (File file : files) {
-            File zipFile = new File(dir.getPath(), file.getName() + ".z");
+            zipFile(dir, file);
+        }
 
-            byte[] buf = new byte[4096];
+        printZipFiles(dir);
+    }
 
-            try (ZipOutputStream out = new ZipOutputStream(new FileOutputStream(zipFile))) {
-                try (FileInputStream in = new FileInputStream(file)) {
+    private void zipFile(File dir, File file) throws IOException {
+        File zipFile = new File(dir.getPath(), file.getName() + ".z");
 
-                    ZipEntry ze = new ZipEntry(file.getName());
-                    out.putNextEntry(ze);
+        byte[] buf = new byte[4096];
 
-                    int len;
-                    while ((len = in.read(buf)) > 0) {
-                        out.write(buf, 0, len);
-                    }
+        try (ZipOutputStream out = new ZipOutputStream(new FileOutputStream(zipFile))) {
+            try (FileInputStream in = new FileInputStream(file)) {
 
-                    out.closeEntry();
+                ZipEntry ze = new ZipEntry(file.getName());
+                out.putNextEntry(ze);
+
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
                 }
+
+                out.closeEntry();
             }
         }
+    }
+
+    private void printZipFiles(File dir) {
+        Stream.of(dir.listFiles())
+                .filter(f -> f.getName().endsWith(".z"))
+                .forEach(f -> System.out.println(f.getName() + " " + f.length()/1024 + "KB"));
     }
 }
