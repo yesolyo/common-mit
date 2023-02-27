@@ -28,5 +28,11 @@ public class OutputView {
 	}
 
 	private void printEachFileHash(List<Map<String, Object>> result) {
+		StringBuilder printResult = new StringBuilder();
+		result
+			.forEach(map -> map.forEach((k, v) -> printResult.append(k)
+				.append(" = ")
+				.append(v).append("\n")));
+		System.out.println(printResult);
 	}
 }
