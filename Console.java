@@ -12,6 +12,7 @@ public class Console {
         Command command = new Command(inputs[1]);
         Directory directory = new Directory(inputs[2]);
 
+        command.caseOfList();
         br.close();
     }
 }
