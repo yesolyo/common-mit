@@ -25,7 +25,9 @@ export class App {
         const filePath = path.join(directoryPath, file);
         try {
           const stats = await stat(filePath);
-          console.log(`${index + 1}. ${file} ${stats.size} bytes`);
+          console.log(
+            `${index + 1}. ${file} ${(stats.size / 1024).toFixed(2)}KB`
+          );
         } catch (err) {
           console.log(`Error getting file stats: ${err}`);
         }
