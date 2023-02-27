@@ -11,6 +11,7 @@ public class HashInstruction {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
 
         for (File file : files) {
+            if (file.getName().endsWith(".z")) continue;
             extractFileHash(md, file);
         }
     }
