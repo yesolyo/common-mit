@@ -10,6 +10,7 @@ public class Console {
 
         Mit mit = new Mit(inputs[0]);
         Command command = new Command(inputs[1]);
+        Directory directory = new Directory(inputs[2]);
 
         br.close();
     }
