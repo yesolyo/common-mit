@@ -1,8 +1,9 @@
 import java.io.File;
 import java.util.List;
+import java.util.Optional;
 
 public interface MitCommand {
-    List<File> list(String directoryName);
-    List<String> hash(String directoryName);
-    List<String> zlib(String directoryName);
+    Optional<List<File>> list(String directoryName);
+    Optional<List<String>> hash(String directoryName);
+    Optional<List<String>> zlib(String directoryName);
 }
