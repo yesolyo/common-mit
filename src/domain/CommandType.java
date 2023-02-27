@@ -7,33 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
+
+import service.SHA256Service;
 
 public enum CommandType {
 	LIST {
 		@Override
 		public List<Map<String, Object>> doTask(String directoryPath) {
-			List<Map<String, Object>> ret = new ArrayList<>();
-			File[] files = new File(directoryPath).listFiles();
-
-			for (File file : Objects.requireNonNull(files)) {
+			return taskTemplate(directoryPath, file -> {
 				try {
-					if (file.isFile()) {
-						ret.add(Map.of(file.getName(), Files.size(file.toPath())));
-						continue;
-					}
-					if (file.isDirectory()) {
-						ret.addAll(doTask(file.getPath()));
-					}
+					return Files.size(file.toPath());
 				} catch (IOException e) {
 					throw new IllegalArgumentException("[ERROR] 잘못된 경로를 입력했습니다.");
 				}
-			}
-			return ret;
+			});
 		}
 	}, HASH {
 		@Override
 		public List<Map<String, Object>> doTask(String directoryPath) {
-			return null;
+			return taskTemplate(directoryPath, SHA256Service::encrypt);
 		}
 	}, ZLIB {
 		@Override
@@ -43,6 +36,23 @@ public enum CommandType {
 	};
 
 	public abstract List<Map<String, Object>> doTask(String directoryPath);
+
+	List<Map<String, Object>> taskTemplate(String directoryPath, Function<File, Object> logic) {
+		List<Map<String, Object>> ret = new ArrayList<>();
+
+		File[] files = new File(directoryPath).listFiles();
+
+		for (File file : Objects.requireNonNull(files)) {
+
+			if (file.isFile()) {
+				ret.add(Map.of(file.getName(), logic.apply(file)));
+			}
+			if (file.isDirectory()) {
+				ret.addAll(doTask(file.getPath()));
+			}
+		}
+		return ret;
+	}
 
 	public static CommandType of(String command) {
 		return switch (command) {
