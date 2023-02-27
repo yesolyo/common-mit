@@ -14,11 +14,15 @@ public class Terminal {
     public String[] readUserInput() throws IOException{
         String[] strings = br.readLine().split(" ");
 
-        if (!strings[0].toLowerCase().equals(TAG) && !strings[0].toLowerCase().equals(EXIT)) {
+        if (isValidTag(strings) || strings.length>3) {
             System.out.println("[EXCEPTION] 유효하지 않는 명령입니다.");
             return readUserInput();
         }
 
         return strings;
+    }
+
+    private boolean isValidTag(String[] strings) {
+        return !strings[0].toLowerCase().equals(TAG) && !strings[0].toLowerCase().equals(EXIT);
     }
 }
