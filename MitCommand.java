@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum CommandType {
+public enum MitCommand {
     LIST("list"){
         @Override
         void run(String directory) {
@@ -24,11 +24,11 @@ public enum CommandType {
     private String command;
     private String reg = String.format("mit %s /[.]+", command);
 
-    CommandType(String command) {
+    MitCommand(String command) {
         this.command = command;
     }
 
-    public static Optional<CommandType> of (String str) {
+    public static Optional<MitCommand> of (String str) {
         return Arrays.stream(values()).filter(e -> e.command.equals(str)).findFirst();
     }
 

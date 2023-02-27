@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Map;
 
 public class Terminal {
     private BufferedReader br;
@@ -11,18 +12,34 @@ public class Terminal {
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public String[] readUserInput() throws IOException{
+    public Map<Command, String[]> readUserInput() throws IOException{
         String[] strings = br.readLine().split(" ");
 
-        if (isValidTag(strings) || strings.length>3) {
-            System.out.println("[EXCEPTION] 유효하지 않는 명령입니다.");
-            return readUserInput();
+        if (isMit(strings) && isValidDirectory(strings[2])) {
+            return Map.of(Command.MIT, strings);
         }
 
-        return strings;
+        if (isExit(strings)) {
+            return Map.of(Command.EXIT, strings);
+        }
+
+        System.out.println("[EXCEPTION] 유효하지 않는 명령입니다.");
+        return readUserInput();
     }
 
-    private boolean isValidTag(String[] strings) {
-        return !strings[0].toLowerCase().equals(TAG) && !strings[0].toLowerCase().equals(EXIT);
+    private boolean isValidDirectory(String directory) {
+        if (directory.charAt(0)!='~' || directory.charAt(1)!='/') {
+            System.out.println("[Exception] 유효하지 않은 파일 경로입니다. 다시 입력하세요.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isExit(String[] strings) {
+        return strings[0].toLowerCase().equals(EXIT);
+    }
+
+    private boolean isMit(String[] strings) {
+        return strings[0].toLowerCase().equals(TAG);
     }
 }
