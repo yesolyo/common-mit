@@ -3,26 +3,26 @@ public class Command {
 
     public Command(String input) {
         this.command = input;
+        isList();
+        isHash();
+        isZlib();
     }
 
-    public boolean isList() {
-        if (command.equals("list")) {
-            return true;
+    private void isList() {
+        if (!command.equals("list")) {
+            throw new IllegalArgumentException("mit 입력하세요.");
         }
-        throw new IllegalArgumentException("mit 입력하세요.");
     }
 
-    public boolean isHash() {
-        if (command.equals("hash")) {
-            return true;
+    private void isHash() {
+        if (!command.equals("hash")) {
+            throw new IllegalArgumentException("mit 입력하세요.");
         }
-        throw new IllegalArgumentException("mit 입력하세요.");
     }
 
-    public boolean isZlib() {
-        if (command.equals("zlib")) {
-            return true;
+    private void isZlib() {
+        if (!command.equals("zlib")) {
+            throw new IllegalArgumentException("mit 입력하세요.");
         }
-        throw new IllegalArgumentException("mit 입력하세요.");
     }
 }
