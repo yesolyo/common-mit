@@ -13,6 +13,7 @@ public class Terminal {
     }
 
     public Map<Command, String[]> readUserInput() throws IOException{
+        System.out.print("> ");
         String[] strings = br.readLine().split(" ");
 
         if (isMit(strings) && isValidDirectory(strings[2])) {
@@ -23,12 +24,12 @@ public class Terminal {
             return Map.of(Command.EXIT, strings);
         }
 
-        System.out.println("[EXCEPTION] 유효하지 않는 명령입니다.");
+        System.out.println("다시 입력하세요.");
         return readUserInput();
     }
 
     private boolean isValidDirectory(String directory) {
-        if (directory.charAt(0)!='~' || directory.charAt(1)!='/') {
+        if (directory.charAt(0)!='/' && directory.charAt(1)!='/') {
             System.out.println("[Exception] 유효하지 않은 파일 경로입니다. 다시 입력하세요.");
             return false;
         }
@@ -36,10 +37,10 @@ public class Terminal {
     }
 
     private boolean isExit(String[] strings) {
-        return strings[0].toLowerCase().equals(EXIT);
+        return strings[0].equalsIgnoreCase(EXIT);
     }
 
     private boolean isMit(String[] strings) {
-        return strings[0].toLowerCase().equals(TAG);
+        return strings[0].equalsIgnoreCase(TAG);
     }
 }
