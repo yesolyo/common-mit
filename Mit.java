@@ -3,13 +3,12 @@ public class Mit {
 
     public Mit(String input) {
         this.mit = input;
+        isMit();
     }
 
-    public boolean isMit() {
-        if (mit.equals("mit")) {
-            return true;
+    private void isMit() {
+        if (!mit.equals("mit")) {
+            throw new IllegalArgumentException("mit 입력하세요.");
         }
-
-        throw new IllegalArgumentException("mit 입력하세요.");
     }
 }
