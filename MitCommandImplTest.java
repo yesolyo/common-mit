@@ -1,12 +1,10 @@
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.List;
-import java.util.regex.Pattern;
-
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Optional;
 
 class MitCommandImplTest {
     @Test
@@ -15,10 +13,12 @@ class MitCommandImplTest {
         //given
         MitCommand mit = new MitCommandImpl();
         //when
-        List<File> list = mit.list("./Work/Masters");
+        Optional<List<File>> optionalList = mit.list("./Work/Masters");
         //then
-        list.stream()
-            .map(file->String.format("%s %.2fKB", file.getName(), (double) file.length() / 1024))
-            .forEach(System.out::println);
+        optionalList.ifPresentOrElse(list->{
+            list.stream()
+                    .map(file->String.format("%s %.2fKB", file.getName(), (double) file.length() / 1024))
+                    .forEach(System.out::println);
+        }, ()->Assertions.fail("테스트에 실패하였습니다."));
     }
 }
