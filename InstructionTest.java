@@ -19,4 +19,11 @@ class InstructionTest {
         File dir = new File("./Work/Masters");
         hashIns.printHash(dir);
     }
+
+    @Test
+    void zipTest() throws IOException {
+        ZlibInstruction zlibIns = new ZlibInstruction();
+        File dir = new File("./Work/Masters");
+        zlibIns.zip(dir);
+    }
 }
