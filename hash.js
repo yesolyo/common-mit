@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
 /**
  *
@@ -8,7 +9,12 @@ const path = require("path");
  */
 function hash(directoryPath) {
   const files = fs.readdirSync(directoryPath);
-  files.forEach((file) => {});
+
+  files.forEach((file) => {
+    const filePath = path.resolve(directoryPath, file);
+    const hash = crypto.createHash("sha256").update(filePath).digest("hex");
+    console.log(`${file} : ${hash}`);
+  });
 }
 
 module.exports = { hash: hash };
