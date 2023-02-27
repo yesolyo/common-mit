@@ -20,7 +20,7 @@ public class MitService {
 	public void run() {
 		Command command = getCommand();
 		List<Map<String, Object>> taskResult = command.doTask();
-		outputView.printEachFileSize(taskResult);
+		outputView.printTaskResult(taskResult, command.getCommand());
 	}
 
 	private Command getCommand() {

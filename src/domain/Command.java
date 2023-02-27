@@ -26,6 +26,10 @@ public class Command {
 		}
 	}
 
+	public CommandType getCommand() {
+		return command;
+	}
+
 	public List<Map<String, Object>> doTask() {
 		return command.doTask(directoryPath);
 	}
