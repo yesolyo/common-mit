@@ -5,8 +5,14 @@ const rl=readline.createInterface({input,output});
 let changeInput=[];
 rl.on('line',(input)=>{
     changeInput = input.split(" ")
-    if(changeInput[1]==="list"){
-        list("."+changeInput[2]);
+    switch (changeInput[1]){
+        case "list":
+            list("."+changeInput[2]);
+            break;
+        case "hash":
+            break;
+        case "map":
+            break;
     }
     rl.close();
 })
@@ -14,3 +20,4 @@ rl.on('line',(input)=>{
 rl.on('close', ()=>{
     process.exit();
 })
+
